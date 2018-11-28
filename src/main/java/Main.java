@@ -4,6 +4,6 @@
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("TP_Maven");
+        System.out.println("TP_Maven_2");
     }
 }
