@@ -1,4 +1,4 @@
-package TPMaven;
+package tpMaven;
 
 /**
  * @author Céline MERAND

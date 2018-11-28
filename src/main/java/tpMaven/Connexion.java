@@ -1,4 +1,4 @@
-package TPMaven;
+package tpMaven;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package TPMaven;
+package tpMaven;
 
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
