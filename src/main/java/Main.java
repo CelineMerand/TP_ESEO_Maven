@@ -55,7 +55,6 @@ public class Main {
                 objects.add(new Ville(record));
             }
         } catch (IOException e) {
-            System.exit(1);
             throw new UnsupportedOperationException("ERREUR " + e);
         }
         return objects;
