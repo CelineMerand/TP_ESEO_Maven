@@ -26,7 +26,7 @@ public class Connexion {
         try (InputStream is = getClass().getResourceAsStream(FILE)) {
             prop.load(is);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new UnsupportedOperationException("IOException " + e);
         }
 
         this.version = prop.getProperty("version");
