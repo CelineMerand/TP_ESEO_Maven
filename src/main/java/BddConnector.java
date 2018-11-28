@@ -1,8 +1,11 @@
+import com.sun.org.apache.bcel.internal.generic.LOOKUPSWITCH;
+
 import java.sql.*;
 import java.util.List;
 
 import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 import static java.util.logging.Level.INFO;
+import static java.util.logging.Level.WARNING;
 
 /**
  * @author Céline MERAND
@@ -23,7 +26,7 @@ public class BddConnector {
             con = DriverManager.getConnection(
                     connexion.getJdbc(),connexion.getUser(),connexion.getPassword());
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(WARNING, "La tentative de connection à la base de données a échoué");
         }
 
         return con;
@@ -85,7 +88,7 @@ public class BddConnector {
             LOGGER.log(INFO, "Mise à jour de " + requestsU + " entrées");
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(WARNING, "La manoeuvre d'insertion/de modification a échoué");
         }
     }
 
@@ -99,7 +102,7 @@ public class BddConnector {
 
             exist = resultSet.next();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(WARNING, "La manoeuvre de vérification a échoué");
         }
 
         return exist;
@@ -133,7 +136,7 @@ public class BddConnector {
         try (Statement stmt = connection.createStatement()){
             stmt.execute(query);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(WARNING, "La création de table a échoué");
         }
     }
 }
