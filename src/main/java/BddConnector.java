@@ -111,6 +111,7 @@ public class BddConnector {
             st.executeQuery("SELECT * FROM " + TABLE + " LIMIT 1");
         } catch (SQLException e) {
             exist = false;
+            throw new UnsupportedOperationException("SQLException " + e);
         }
 
         return exist;
