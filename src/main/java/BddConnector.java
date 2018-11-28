@@ -1,5 +1,9 @@
 import java.sql.*;
 import java.util.List;
+import java.util.logging.Logger;
+
+import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
+import static java.util.logging.Level.INFO;
 
 /**
  * @author Céline MERAND
@@ -42,15 +46,14 @@ public class BddConnector {
             int current = 0;
 
             int pState = 0;
-            int state = 0;
+            int state;
             for(Ville obj : objects) {
                 current++;
                 state = current * 100 / max;
 
                 if(state != pState) {
                     pState = state;
-                    System.out.println("Insertion des entitées... " +state + "%");
-
+                    LOGGER.log(INFO,"Insertion des entités... " + state + "%");
                 }
                 if(this.existInDatabase(con, obj)) {
                     stU.setString(1, obj.getNomCommune());
@@ -78,8 +81,8 @@ public class BddConnector {
                 }
             }
 
-            System.out.println("Insertion de " + requestsI + " entrées");
-            System.out.println("Mise à jour de " + requestsU + " entrées");
+            LOGGER.log(INFO, "Insertion de " + requestsI + " entrées");
+            LOGGER.log(INFO, "Mise à jour de " + requestsU + " entrées");
 
         } catch (SQLException e) {
             e.printStackTrace();
